@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.schedule-builder-view {
+	display : none;
+}
+
+/*#wholeTableID{
+	display : none;
+}
+
+#scheduleTableID{
+	display : none;
+}*/
+
+#scheduleAndCoverageDisplayID{
+	display : none;
+}
+
+table td.highlighted {
+      background-color:#999;
+    }
+/*
+table td{
+	text-align: center;
+}*/

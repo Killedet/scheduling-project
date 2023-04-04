@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+	<div th:fragment="schedule-table" >
+		<h2 >Schedule</h2>
+  		<div class="table-responsive-lg">
+  		<table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-sm text-center" id="scheduleTableID">
+  			<thead>
+  				<tr>
+      				<th scope="col">Schedule</th>
+     	 			<th scope="col">Monday</th>
+      				<th scope="col">Tuesday</th>
+      				<th scope="col">Wednesday</th>
+      				<th scope="col">Thursday</th>
+     	 			<th scope="col">Friday</th>
+      				<th scope="col">Saturday</th>
+      				<th scope="col">Sunday</th>
+      				<th scope="col">Action</th>
+    			</tr>
+  			</thead>
+  			<tbody id="scheduleTableBodyID">
+  		
+  			</tbody>
+  			
+  		</table>
+  		</div>
+		<button id="addScheduleButtonID" class="btn btn-success">Add Schedule</button>
+	</div>
+
+</body>
+
+</html>

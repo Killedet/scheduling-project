@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+	<div th:fragment="coverage-table">
+		<h2>Coverage</h2>
+  		
+  		<table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-sm" id="wholeTableID">
+  			<thead>
+  				<tr>
+      				<th scope="col">Time</th>
+     	 			<th scope="col">Monday</th>
+      				<th scope="col">Tuesday</th>
+      				<th scope="col">Wednesday</th>
+      				<th scope="col">Thursday</th>
+     	 			<th scope="col">Friday</th>
+      				<th scope="col">Saturday</th>
+      				<th scope="col">Sunday</th>
+    			</tr>
+  			</thead>
+  			<tbody id="tableToolBodyID">
+  		
+  			</tbody>
+  		</table>
+	
+	</div>
+
+</body>
+
+</html>

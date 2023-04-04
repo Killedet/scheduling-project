@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head></head>
+
+	<body>
+		<div th:fragment="schedule-builder-form">
+  			<div  class="container-fluid schedule-builder-container schedule-builder-view">
+	  			<form id="autoScheduleFormID" name="autoScheduleForm" action="javascript:void(0);" class="row g-3" >
+	  			<div class="col-md-2">
+    			<label for="numWorkers" class="form-label">Number of Workers</label>
+    			<input type="number" class="form-control" id="numWorkersInput" required min=1>
+    			
+  			</div>
+  		<!--  
+  			<div class="col-md-2">
+  				<label for="idForShiftLengthLabel" class="form-label">Shift Length</label>
+  				<div id="idForShiftLengthLabel"class="input-group md-3">
+    				<input type="number" class="form-control" id="shiftLengthInput" required min=1>
+    				<span class="input-group-text">hrs</span>
+  				</div>
+    		
+  			</div> -->
+  		
+  		
+  		<div class="col-md-2">
+    		<label for="shiftsPerWorkerInput" class="form-label">Shifts Per Worker</label>
+    		<input type="number" class="form-control" id="shiftsPerWorkerInput" required min=1>
+  		</div>
+  		<div class="col-md-2">
+    		<label for="workersPerShiftInput" class="form-label">Workers Per Shift</label>
+    		<input type="number" class="form-control" id="workersPerShiftInput" required min=1>
+  		</div>
+
+  		<div class="col-md-6">
+    		<div class="input-group md-2">
+  				<span class="input-group-text">Shift Length</span>
+    			<input type="number" class="form-control" id="shiftHoursInput" min=1 max=24 required>
+    			<span class="input-group-text">hrs</span>
+    			<input type="number" step="15" class="form-control" id="shiftMinutesInput" min=0 max=45 required>
+    			<span class="input-group-text">mins</span>
+    			
+  			</div>
+  		</div>
+  		<div class="col-md-6">
+  			<label for="idForHoursOfOperationLabel" class="form-label">Hours of Operation</label>
+    		<div class="input-group md-3" id="idForHoursOfOperationLabel">
+  				<!--  <span class="input-group-text">Hours of Operation</span> -->
+  				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="24HrCheckInput">
+  					<label class="form-check-label" for="24HrCheckInput">24 Hour</label>
+				</div>
+  				
+  				<span class="input-group-text" id="openTimeLabelID">Open</span>
+    			<input type="time" class="form-control" id="openTimeInput" required>
+    			
+    			<span class="input-group-text" id="closeTimeLabelID">Close</span>
+    			<input type="time" class="form-control" id="closeTimeInput" required>
+    			
+  			</div>
+  		</div>
+  		<div class="col-md-8">
+  			<label for="idForDaysOpenLabel" class="form-label">Days Open</label>
+  			<div id="idForDaysOpenLabel">
+  				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="mondayCheckInput">
+  					<label class="form-check-label" for="mondayCheckInput">Monday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="tuesdayCheckInput">
+  					<label class="form-check-label" for="tuesdayCheckInput">Tuesday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="wednesdayCheckInput">
+  					<label class="form-check-label" for="wednesdayCheckInput">Wednesday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="thursdayCheckInput">
+  					<label class="form-check-label" for="thursdayCheckInput">Thursday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="fridayCheckInput">
+  					<label class="form-check-label" for="fridayCheckInput">Friday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="saturdayCheckInput">
+  					<label class="form-check-label" for="saturdayCheckInput">Saturday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="sundayCheckInput">
+  					<label class="form-check-label" for="sundayCheckInput">Sunday</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="checkbox" id="alldayCheckInput">
+  					<label class="form-check-label" for="alldayCheckInput">All</label>
+				</div>
+				
+  			</div>
+  			
+  		</div>
+  		
+  		<div class="col-12">
+    		<button id="submitAutoScheduleForm" type="submit" class="btn btn-primary">Submit</button>
+  		</div>
+  		</form>
+  	</div>
+		</div>
+	</body>
+
+</html>
