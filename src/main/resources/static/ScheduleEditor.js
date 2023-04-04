@@ -49,10 +49,20 @@ class ScheduleEditor{
 	getScheduleOwnerArray(){
 		return this.#scheduleOwnerArray;
 	}
+	deleteSingleWorkSchedule(indexInScheduleArray){
+		this.#scheduleArray.splice(indexInScheduleArray,1);
+		this.#scheduleOwnerArray.splice(indexInScheduleArray,1);
+		this.#privateMakeCoverageArray();
+		this.#privateFillShiftCoverageArray(this.#scheduleArray);
+	}
 	submitNewSingleWorkSchedule(container,newScheduleArray){
 		this.#scheduleArray.push(newScheduleArray);
 		this.#scheduleOwnerArray.push([(this.#scheduleArray.length),-1,"none"]);
+		this.#privateMakeCoverageArray();
+		this.#privateFillShiftCoverageArray(this.#scheduleArray);
+		
 		this.insertSingleWorkScheduleIntoTable(container,newScheduleArray);
+		
 	}
 	insertSingleWorkScheduleIntoTable(container,newScheduleArray){
 		var color = this.#bgColors[0];
@@ -205,6 +215,7 @@ class ScheduleEditor{
 		return timeArray[0].toString() + " to " + timeArray[1].toString();
 	}
 	createAndDisplayTableToolBody(tableBody){
+		
 		var timeSlot = this.#openTime;
 		
 		for(var i = 0; i < this.#coverageArray[0].length; i++){

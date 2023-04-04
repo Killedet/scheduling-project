@@ -2,10 +2,10 @@
  RUN mvnw spring-boot:run
  */
  $(document).ready(function(){
-	var scheduler;
-	var minOnShift;
-	var coverageArray;
-	var scheduleEditor;
+	var scheduler; //SCHEDULE BUILDER FOR AUTO SCHEDULE CREATION
+	var minOnShift; //MIN NUMBER OF WORKERS ON SCHEDULE
+	var coverageArray; //COVERAGE ARRAY FROM SCHEDULE EDITOR
+	var scheduleEditor; //GLOBAL SCHEDULE EDITOR
 	$('#schedule-builder-click-to-start').click(function(){
 		$(".schedule-builder-view").show();
 	});
@@ -35,6 +35,9 @@
 		console.log("DELETE");
 		
 		var row = $(this).data('rowid');
+		$('#tableToolBodyID').empty();
+		scheduleEditor.deleteSingleWorkSchedule(row);
+		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
 		$(this).closest('tr').remove();
 	});
 	
@@ -89,7 +92,9 @@
 			//console.log(currentTime);
 		});
 		$(this).closest('tr').remove();
+		$('#tableToolBodyID').empty();
 		scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule);
+		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
 		//console.log(firstTime);
 	});
 	
