@@ -28,6 +28,7 @@
 		event.preventDefault();
 		console.log("EDIT");
 		var row = $(this).data('rowid');
+		
 	});
 	
 	$('#scheduleTableBodyID').on('click', '.singleScheduleDeleteButton',function(event){
@@ -91,6 +92,7 @@
 			}
 			//console.log(currentTime);
 		});
+	
 		$(this).closest('tr').remove();
 		$('#tableToolBodyID').empty();
 		scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule);

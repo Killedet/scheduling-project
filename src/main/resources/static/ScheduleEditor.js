@@ -66,7 +66,7 @@ class ScheduleEditor{
 	}
 	insertSingleWorkScheduleIntoTable(container,newScheduleArray){
 		var color = this.#bgColors[0];
-		var lastInTable = this.#scheduleArray.length - 2;
+		var lastInTable = (this.#scheduleArray.length * 2) - 2;
 		var lastInArray = this.#scheduleArray.length - 1;
 			var rowID = this.#scheduleArray.length - 1;
 			//colorCode = (colorCode + 1) % 5;
@@ -100,12 +100,12 @@ class ScheduleEditor{
   					<td data-rowid= "${rowID}"><button data-rowid= "${rowID}" class="btn btn-warning singleScheduleEditButton">Edit</button><button data-rowid= "${rowID}" class="btn btn-danger singleScheduleDeleteButton">Delete</button></td>
   				<tr>
 			`;
-			$('#scheduleTableBodyID').append(newRowString);
+			//$('#scheduleTableBodyID').append(newRowString);
 			//document.getElementById(container).insertRow((this.#scheduleArray.length - 2)).innerHTML = newRowString;
 			var appendTo = container + " > tbody > tr";
 			console.log(appendTo);
 			console.log(lastInTable);
-			//$(appendTo).eq(lastInTable).after(newRowString);
+			$(appendTo).eq(lastInTable).after(newRowString);
 	}
 	addSingleWorkSchedule(container){
 		var newSingleSchedule = `
