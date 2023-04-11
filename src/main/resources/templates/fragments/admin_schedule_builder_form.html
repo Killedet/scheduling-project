@@ -10,7 +10,7 @@
 	  			<form id="autoScheduleFormID" name="autoScheduleForm" action="javascript:void(0);" class="row g-3" >
 	  			<div class="col-md-2">
     			<label for="numWorkers" class="form-label">Number of Workers</label>
-    			<input type="number" class="form-control" id="numWorkersInput" required min=1>
+    			<input type="number" class="form-control" id="numWorkersInput" required min=1 value=12>
     			
   			</div>
   		<!--  
@@ -26,19 +26,19 @@
   		
   		<div class="col-md-2">
     		<label for="shiftsPerWorkerInput" class="form-label">Shifts Per Worker</label>
-    		<input type="number" class="form-control" id="shiftsPerWorkerInput" required min=1>
+    		<input type="number" class="form-control" id="shiftsPerWorkerInput" required min=1 value=5>
   		</div>
   		<div class="col-md-2">
     		<label for="workersPerShiftInput" class="form-label">Workers Per Shift</label>
-    		<input type="number" class="form-control" id="workersPerShiftInput" required min=1>
+    		<input type="number" class="form-control" id="workersPerShiftInput" required min=1 value=2>
   		</div>
 
   		<div class="col-md-6">
     		<div class="input-group md-2">
   				<span class="input-group-text">Shift Length</span>
-    			<input type="number" class="form-control" id="shiftHoursInput" min=1 max=24 required>
+    			<input type="number" class="form-control" id="shiftHoursInput" min=1 max=24 value=8 required>
     			<span class="input-group-text">hrs</span>
-    			<input type="number" step="15" class="form-control" id="shiftMinutesInput" min=0 max=45 required>
+    			<input type="number" step="15" class="form-control" id="shiftMinutesInput" min=0 max=45 value=0 required>
     			<span class="input-group-text">mins</span>
     			
   			</div>
@@ -48,12 +48,12 @@
     		<div class="input-group md-3" id="idForHoursOfOperationLabel">
   				<!--  <span class="input-group-text">Hours of Operation</span> -->
   				<div class="form-check form-check-inline">
-  					<input class="form-check-input" type="checkbox" id="24HrCheckInput">
+  					<input class="form-check-input" type="checkbox" id="24HrCheckInput" value=1>
   					<label class="form-check-label" for="24HrCheckInput">24 Hour</label>
 				</div>
   				
   				<span class="input-group-text" id="openTimeLabelID">Open</span>
-    			<input type="time" class="form-control" id="openTimeInput" required>
+    			<input type="time" class="form-control" id="openTimeInput" value="06:00" required>
     			
     			<span class="input-group-text" id="closeTimeLabelID">Close</span>
     			<input type="time" class="form-control" id="closeTimeInput" required>
@@ -92,7 +92,7 @@
   					<label class="form-check-label" for="sundayCheckInput">Sunday</label>
 				</div>
 				<div class="form-check form-check-inline">
-  					<input class="form-check-input" type="checkbox" id="alldayCheckInput">
+  					<input class="form-check-input" type="checkbox" id="alldayCheckInput" value=1>
   					<label class="form-check-label" for="alldayCheckInput">All</label>
 				</div>
 				

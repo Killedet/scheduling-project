@@ -55,16 +55,27 @@ class ScheduleEditor{
 		this.#privateMakeCoverageArray();
 		this.#privateFillShiftCoverageArray(this.#scheduleArray);
 	}
-	submitNewSingleWorkSchedule(container,newScheduleArray){
-		this.#scheduleArray.push(newScheduleArray);
-		this.#scheduleOwnerArray.push([(this.#scheduleArray.length),-1,"none"]);
+	startEditingSingleWorkSchedule(row){
+		var template = this.appendEditingSingleWorkSchedule(row);
+		return template;
+	}
+	submitNewSingleWorkSchedule(container,newScheduleArray,row){
+		console.log(row);
+		if(row === -1){
+			this.#scheduleArray.push(newScheduleArray);
+			this.#scheduleOwnerArray.push([(this.#scheduleArray.length),-1,"none"]);
+		}else{
+			this.#scheduleArray[row] = newScheduleArray;
+		}
+		
 		this.#privateMakeCoverageArray();
 		this.#privateFillShiftCoverageArray(this.#scheduleArray);
 		
-		this.insertSingleWorkScheduleIntoTable(container,newScheduleArray);
+		var template = this.insertSingleWorkScheduleIntoTable(container,newScheduleArray,row);
+		return template;
 		
 	}
-	insertSingleWorkScheduleIntoTable(container,newScheduleArray){
+	insertSingleWorkScheduleIntoTable(container,newScheduleArray,row){
 		var color = this.#bgColors[0];
 		var lastInTable = (this.#scheduleArray.length * 2) - 2;
 		var lastInArray = this.#scheduleArray.length - 1;
@@ -102,10 +113,58 @@ class ScheduleEditor{
 			`;
 			//$('#scheduleTableBodyID').append(newRowString);
 			//document.getElementById(container).insertRow((this.#scheduleArray.length - 2)).innerHTML = newRowString;
-			var appendTo = container + " > tbody > tr";
-			console.log(appendTo);
-			console.log(lastInTable);
-			$(appendTo).eq(lastInTable).after(newRowString);
+			if(row === -1){
+				var appendTo = container + " > tbody > tr";
+				$(appendTo).eq(lastInTable).after(newRowString);
+			}
+			return newRowString;
+	}
+	appendEditingSingleWorkSchedule(row){
+		var singleScheduleToEdit = this.#scheduleArray[row];
+		
+		var allDefaultStrLiterals = ``;
+		for(var i = 0; i < singleScheduleToEdit.length; i++){
+			var startTime = singleScheduleToEdit[i][0].toString();
+			var endTime = "";
+			if(startTime === "0-1:00"){
+				startTime = "";
+				endTime = "";
+			}else{
+				endTime = singleScheduleToEdit[i][1].toString();
+			}
+			var singleRow = `
+				<td data-othercolor= "bg-primary" data-colid= "${i}" data-rowid="${row}" class= "bg-dark text-white">
+  					<div class="w-100">
+  						<input class="tableNewScheduleTime" type="time" value = "${startTime}"> 
+  						<div> to </div> 
+  						<input class="tableNewScheduleTime" type="time" value = "${endTime}">
+  					</div>
+  				</td>
+			`
+			allDefaultStrLiterals += singleRow;
+		}
+		var singleScheduleName;
+		if(this.#scheduleOwnerArray[row][1] === -1){
+			singleScheduleName = "Schedule " + this.#scheduleOwnerArray[row][0];
+				
+		}else{
+			singleScheduleName = this.#scheduleOwnerArray[row][2];
+		}
+		var totalSingleSchedule = `<tr data-rowid="${row}">
+									<th data-rowid="${row}" scope="row"> ${singleScheduleName}</th>
+									` + allDefaultStrLiterals +
+									`
+										<td data-rowid="${row}"><button data-rowid="${row}" class="btn btn-success editSaveButton">Save</button></td>
+									<tr>`;
+		/*var appendTo = container + " > tbody > tr";
+		var indexOfRow = (row * 2);
+		console.log(totalSingleSchedule);
+		console.log(indexOfRow);
+		console.log(appendTo);
+		$('#testDiv').append(totalSingleSchedule);
+		$(appendTo).eq(2).after(totalSingleSchedule);*/
+		return totalSingleSchedule;
+		
 	}
 	addSingleWorkSchedule(container){
 		var newSingleSchedule = `

@@ -28,7 +28,9 @@
 		event.preventDefault();
 		console.log("EDIT");
 		var row = $(this).data('rowid');
-		
+		var editingRow = scheduleEditor.startEditingSingleWorkSchedule(row);
+		$(this).parent().parent().replaceWith(editingRow);
+		//$(this).closest('tr').remove();
 	});
 	
 	$('#scheduleTableBodyID').on('click', '.singleScheduleDeleteButton',function(event){
@@ -40,6 +42,52 @@
 		scheduleEditor.deleteSingleWorkSchedule(row);
 		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
 		$(this).closest('tr').remove();
+	});
+	
+	$('#scheduleTableBodyID').on('click', '.editSaveButton',function(event){
+		event.preventDefault();
+		console.log("SAVE EDIT");
+		var row = $(this).data('rowid');
+		var start = true;
+		var startTime;
+		var endTime;
+		var newSingleSchedule = [];
+		$(this).closest('tr').find('.tableNewScheduleTime').each(function(){
+			var currentTime = $(this).val();
+			if(start){
+				if(currentTime === ""){
+					startTime = new MyTime(-1,0);
+				}else{
+					var startTimeArray = currentTime.split(':');
+					var startHour = parseInt(startTimeArray[0]);
+					var startMinute = parseInt(startTimeArray[1]);
+					startTime = new MyTime(startHour,startMinute);
+				}
+				start = false;
+			}else{
+				if(currentTime === ""){
+					startTime = new MyTime(-1,0);
+					endTime = new MyTime(-1,0);
+				}else{
+					var endTimeArray = currentTime.split(':');
+					var endHour = parseInt(endTimeArray[0]);
+					var endMinute = parseInt(endTimeArray[1]);
+					endTime = new MyTime(endHour,endMinute);
+				}
+				//console.log("times");
+				//console.log(startTime.toString());
+				//console.log(endTime.toString());
+				newSingleSchedule.push([startTime,endTime]);
+				start = true;
+			}
+			//console.log(currentTime);
+		});
+	
+		$('#tableToolBodyID').empty();
+		var editingRow = scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule,row);
+		$(this).parent().parent().replaceWith(editingRow);
+		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
+		//console.log(firstTime);
 	});
 	
 	$('#addScheduleButtonID').on('click',function(event){
@@ -95,7 +143,7 @@
 	
 		$(this).closest('tr').remove();
 		$('#tableToolBodyID').empty();
-		scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule);
+		scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule,-1);
 		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
 		//console.log(firstTime);
 	});

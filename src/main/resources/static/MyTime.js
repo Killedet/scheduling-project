@@ -69,6 +69,10 @@ class MyTime{
 				minuteStr = "0" + this.#minute.toString();
 			}
 		}
-		return this.#hour + ":" + minuteStr;
+		var hourStr = this.#hour.toString();
+		if(this.#hour < 10){
+			hourStr = "0" + hourStr;
+		}
+		return hourStr + ":" + minuteStr;
 	}
 }

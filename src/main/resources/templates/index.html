@@ -63,13 +63,7 @@
   		
   		
   	</div>
-  <!--  <h2 sec:authorize="hasRole('ROLE_ADMIN')">Shift Coverage</h2>
-  <div sec:authorize="hasRole('ROLE_ADMIN')" class="container-fluid">	
-  	<div class="col-md-8" id="coverageDisplay">
-  				
-  		
-  	</div>
-  </div>-->
+ 
   </div>
   
   <h2 sec:authorize="hasRole('ROLE_ADMIN')" class="schedule-builder-view">Schedule Builder</h2>
@@ -81,46 +75,7 @@
   			<div th:replace="fragments/admin_schedule_table :: schedule-table"></div>
   			
   			<div th:replace="fragments/admin_coverage_table :: coverage-table"></div>
-  		<!--  <h2 >Schedule</h2>
-  		
-  		<table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-sm" id="scheduleTableID">
-  			<thead>
-  				<tr>
-      				<th scope="col">Schedule</th>
-     	 			<th scope="col">Monday</th>
-      				<th scope="col">Tuesday</th>
-      				<th scope="col">Wednesday</th>
-      				<th scope="col">Thursday</th>
-     	 			<th scope="col">Friday</th>
-      				<th scope="col">Saturday</th>
-      				<th scope="col">Sunday</th>
-      				<th scope="col">Action</th>
-    			</tr>
-  			</thead>
-  			<tbody id="scheduleTableBodyID">
-  		
-  			</tbody>
-  		</table>-->
-  		
-  		<!--  <h2>Coverage</h2>
-  		
-  		<table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-sm" id="wholeTableID">
-  			<thead>
-  				<tr>
-      				<th scope="col">Time</th>
-     	 			<th scope="col">Monday</th>
-      				<th scope="col">Tuesday</th>
-      				<th scope="col">Wednesday</th>
-      				<th scope="col">Thursday</th>
-     	 			<th scope="col">Friday</th>
-      				<th scope="col">Saturday</th>
-      				<th scope="col">Sunday</th>
-    			</tr>
-  			</thead>
-  			<tbody id="tableToolBodyID">
-  		
-  			</tbody>
-  		</table>-->
+  	
   		</div>
   <p>
    Welcome <span sec:authentication="principal.username">User</span>
