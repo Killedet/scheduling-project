@@ -15,7 +15,9 @@
 #scheduleAndCoverageDisplayID{
 	display : none;
 }
-
+#addMoreRowsTable{
+	display : none;
+}
 table td.highlighted {
       background-color:#999;
     }

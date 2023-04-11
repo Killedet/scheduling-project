@@ -28,7 +28,31 @@
   		</table>
   		</div>
   		<div id ="testDiv"></div>
-		<button id="addScheduleButtonID" class="btn btn-success">Add Schedule</button>
+		<button id="addScheduleButtonID" class="btn btn-success">New Schedule Row</button>
+		<div id="addMoreRowsTable">
+		<h2 >New Rows to Add</h2>
+		<div class="table-responsive-lg">
+  		<table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-sm text-center" id="newScheduleTableID">
+  			<thead>
+  				<tr>
+      				<th scope="col">Schedule</th>
+     	 			<th scope="col">Monday</th>
+      				<th scope="col">Tuesday</th>
+      				<th scope="col">Wednesday</th>
+      				<th scope="col">Thursday</th>
+     	 			<th scope="col">Friday</th>
+      				<th scope="col">Saturday</th>
+      				<th scope="col">Sunday</th>
+      				<th scope="col">Action</th>
+    			</tr>
+  			</thead>
+  			<tbody id="newScheduleTableBodyID">
+  		
+  			</tbody>
+  			
+  		</table>
+  		</div>
+  		</div>
 	</div>
 
 </body>

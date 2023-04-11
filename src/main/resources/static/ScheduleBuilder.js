@@ -30,7 +30,6 @@
 		var row = $(this).data('rowid');
 		var editingRow = scheduleEditor.startEditingSingleWorkSchedule(row);
 		$(this).parent().parent().replaceWith(editingRow);
-		//$(this).closest('tr').remove();
 	});
 	
 	$('#scheduleTableBodyID').on('click', '.singleScheduleDeleteButton',function(event){
@@ -40,8 +39,9 @@
 		var row = $(this).data('rowid');
 		$('#tableToolBodyID').empty();
 		scheduleEditor.deleteSingleWorkSchedule(row);
+		$('#scheduleTableBodyID').empty();
+		scheduleEditor.appendEditorScheduleToContainer("#scheduleTableBodyID");
 		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
-		$(this).closest('tr').remove();
 	});
 	
 	$('#scheduleTableBodyID').on('click', '.editSaveButton',function(event){
@@ -74,36 +74,34 @@
 					var endMinute = parseInt(endTimeArray[1]);
 					endTime = new MyTime(endHour,endMinute);
 				}
-				//console.log("times");
-				//console.log(startTime.toString());
-				//console.log(endTime.toString());
+				
 				newSingleSchedule.push([startTime,endTime]);
 				start = true;
 			}
-			//console.log(currentTime);
+		
 		});
 	
 		$('#tableToolBodyID').empty();
 		var editingRow = scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule,row);
 		$(this).parent().parent().replaceWith(editingRow);
 		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
-		//console.log(firstTime);
 	});
 	
 	$('#addScheduleButtonID').on('click',function(event){
 		event.preventDefault();
-		scheduleEditor.addSingleWorkSchedule("#scheduleTableBodyID");
+		$('#addMoreRowsTable').show();
+		scheduleEditor.addSingleWorkSchedule("#newScheduleTableBodyID");
 		console.log("ADD");
 		
 	});
 	
-	$('#scheduleTableBodyID').on('click', '.newScheduleDeleteButton',function(event){
+	$('#newScheduleTableBodyID').on('click', '.newScheduleDeleteButton',function(event){
 		event.preventDefault();
 		console.log("DELETE NEW");
 		$(this).closest('tr').remove();
 	});
 	
-	$('#scheduleTableBodyID').on('click', '.newScheduleSaveButton',function(event){
+	$('#newScheduleTableBodyID').on('click', '.newScheduleSaveButton',function(event){
 		event.preventDefault();
 		console.log("SAVE NEW");
 		var start = true;
@@ -132,20 +130,17 @@
 					var endMinute = parseInt(endTimeArray[1]);
 					endTime = new MyTime(endHour,endMinute);
 				}
-				//console.log("times");
-				//console.log(startTime.toString());
-				//console.log(endTime.toString());
+				
 				newSingleSchedule.push([startTime,endTime]);
 				start = true;
 			}
-			//console.log(currentTime);
+			
 		});
 	
 		$(this).closest('tr').remove();
 		$('#tableToolBodyID').empty();
-		scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableID",newSingleSchedule,-1);
+		scheduleEditor.submitNewSingleWorkSchedule("#scheduleTableBodyID",newSingleSchedule,-1);
 		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
-		//console.log(firstTime);
 	});
 	
 	$('#autoScheduleFormID').submit(function(){

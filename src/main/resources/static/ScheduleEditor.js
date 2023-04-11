@@ -114,8 +114,9 @@ class ScheduleEditor{
 			//$('#scheduleTableBodyID').append(newRowString);
 			//document.getElementById(container).insertRow((this.#scheduleArray.length - 2)).innerHTML = newRowString;
 			if(row === -1){
-				var appendTo = container + " > tbody > tr";
-				$(appendTo).eq(lastInTable).after(newRowString);
+				//var appendTo = container + " > tbody > tr";
+				//$(appendTo).eq(lastInTable).after(newRowString);
+				$(container).append(newRowString);
 			}
 			return newRowString;
 	}
