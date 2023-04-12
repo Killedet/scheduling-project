@@ -60,7 +60,7 @@ class ScheduleEditor{
 		return template;
 	}
 	submitNewSingleWorkSchedule(container,newScheduleArray,row){
-		console.log(row);
+		
 		if(row === -1){
 			this.#scheduleArray.push(newScheduleArray);
 			this.#scheduleOwnerArray.push([(this.#scheduleArray.length),-1,"none"]);
@@ -82,11 +82,16 @@ class ScheduleEditor{
 			var rowID = this.#scheduleArray.length - 1;
 			//colorCode = (colorCode + 1) % 5;
 			var singleScheduleName;
-			if(this.#scheduleOwnerArray[lastInArray][1] === -1){
-				singleScheduleName = "Schedule " + this.#scheduleOwnerArray[lastInArray][0];
+			if(row === -1){
+				if(this.#scheduleOwnerArray[lastInArray][1] === -1){
+					singleScheduleName = "Schedule " + this.#scheduleOwnerArray[lastInArray][0];
 				
+				}else{
+					singleScheduleName = this.#scheduleOwnerArray[lastInArray][2];
+				}
 			}else{
-				singleScheduleName = this.#scheduleOwnerArray[lastInArray][2];
+				var scheduleNumber = row + 1;
+				singleScheduleName = "Schedule " + scheduleNumber;
 			}
 			//singleScheduleName = "Schedule " + (i+1);
 			var singleSchedule = newScheduleArray;

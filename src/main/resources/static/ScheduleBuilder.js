@@ -147,6 +147,7 @@
 		event.preventDefault();
 		//$('#scheduleDisplay').empty();
 		$('#scheduleTableBodyID').empty();
+		$('#newScheduleTableBodyID').empty();
 		$('#tableToolBodyID').empty();
 		var numWorkers = $('#numWorkersInput').val();
 		var shiftHours = parseInt($('#shiftHoursInput').val());
@@ -210,7 +211,7 @@
 		coverageArray = scheduleEditor.getCoverageArray();
 		scheduleEditor.appendEditorScheduleToContainer("#scheduleTableBodyID");
 		scheduleEditor.createAndDisplayTableToolBody("#tableToolBodyID");
-		
+		$('#addMoreRowsTable').hide();
 		$("#scheduleAndCoverageDisplayID").show();
 	});
 	
@@ -405,6 +406,7 @@
 		if(this.#maxWorkersPerShift > this.#minSchedulesPerShift){
 			this.#neededSchedulesPerShift = this.#maxWorkersPerShift;
 		}
+		console.log(this.#neededSchedulesPerShift);
 	}
 	#privateGetSingleShiftWeeklySchedule(){
 		/*var minShiftsToFill = this.#workDays.length * this.#minWorkersPerShift;
@@ -464,7 +466,7 @@
 			for(var i = 0; i < this.#neededSchedulesPerShift; i++){
 				var singleSchedule = new Array(7).fill(0);
 				for(var j = 0; j < this.#workDays.length; j++){
-					singleSchedule[this.#workDays[i]] = 1;
+					singleSchedule[this.#workDays[j]] = 1;
 				}
 				singleShiftWeeklySchedule.push(singleSchedule);
 			}
