@@ -1,3 +1,7 @@
+
+
+
+/* OLD DB
 CREATE TABLE "users"(
 	user_id INT PRIMARY KEY ALWAYS GENERATED AS IDENTITY NOT NULL,
 	firstname VARCHAR(50) NOT NULL,
@@ -64,3 +68,4 @@ VALUES
 	('Friday'),
 	('Saturday'),
 	('Sunday');
+*/

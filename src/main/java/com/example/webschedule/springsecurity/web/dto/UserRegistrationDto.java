@@ -3,7 +3,6 @@ package com.example.webschedule.springsecurity.web.dto;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
 import com.example.webschedule.springsecurity.constraint.FieldMatch;
 
 @FieldMatch.List({
@@ -14,7 +13,10 @@ public class UserRegistrationDto {
 
     @NotEmpty
     private String firstName;
-
+    
+    /*@NotEmpty
+    private Long orgID = (long) 1;
+    */
     @NotEmpty
     private String lastName;
 
@@ -40,7 +42,15 @@ public class UserRegistrationDto {
 
     @AssertTrue
     private Boolean terms;
-
+    
+    /*
+    public Long getOrgID() {
+    	return this.orgID;
+    }
+    public void setOrgID(Long id) {
+    	this.orgID = id;
+    }
+    */
     public String getFirstName() {
         return firstName;
     }

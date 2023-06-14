@@ -2,16 +2,15 @@ package com.example.webschedule.springsecurity.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.example.webschedule.springsecurity.model.User;
+import com.example.webschedule.springsecurity.model.Role;
+//import com.example.webschedule.springsecurity.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository < User, Long > {
+public interface RoleRepository extends JpaRepository < Role, Long > {
     /* OLD DB
      * User findByEmail(String email);
      * User findByUsername(String username);
      */
-    
-	User findByEmail(String email);
-    User findByUsername(String username);
+    Role findByRoleName(String roleName);
+	
 }
