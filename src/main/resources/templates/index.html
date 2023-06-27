@@ -41,6 +41,7 @@
           	 <li><hr class="dropdown-divider"></li>
            	 <li sec:authorize="hasRole('ROLE_USER')"><a class= "dropdown-item" th:href="@{/myschedule}">My Schedule</a></li>
            	 <li sec:authorize="hasRole('ROLE_ADMIN')"><a id="schedule-builder-click-to-start" class= "dropdown-item" >Schedule Builder</a></li>
+           	 <li sec:authorize="hasRole('ROLE_ADMIN')"><a id="organization-settings-click-to-start" class= "dropdown-item" >Organization Settings</a></li>
          	 </ul>
        	 </li>
       </ul>
@@ -77,10 +78,18 @@
   			<div th:replace="fragments/admin_coverage_table :: coverage-table"></div>
   	
   		</div>
+  	
+  		
   <p>
    Welcome <span sec:authentication="principal.username">User</span>
   </p>
  </div>
+ 
+ <div sec:authorize="hasRole('ROLE_ADMIN')" class="organization-settings-view container-fluid">Organization Settings
+  		
+  		<div th:replace="fragments/organization_settings_display :: organization-settings-display"></div>
+  		
+  	</div>
 </div>
  <script type="text/javascript"
   th:src="@{/webjars/jquery/3.6.0/jquery.min.js/}"></script>
@@ -94,6 +103,7 @@
   th:src= "@{/ScheduleEditor.js}"></script>
   <script type ="text/javascript" 
   th:src= "@{/ScheduleBuilder.js}"></script>
-
+  <script type ="text/javascript" 
+  th:src= "@{/OrganizationSettings.js}"></script>
 </body>
 </html>

@@ -3,7 +3,9 @@
 .schedule-builder-view {
 	display : none;
 }
-
+.organization-settings-view {
+	display : none;
+}
 /*#wholeTableID{
 	display : none;
 }

@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     	return userRepository.findByUsername(username);
     }
 
-    public User save(UserRegistrationDto registration) {
+    public User save(UserRegistrationDto registration, String role) {
     	System.out.println("DATE" + LocalDate.now( timezone ).toString());
         User user = new User();
         user.setUsername(registration.getUsername());
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         user.setHired(LocalDate.now( timezone ));
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
         user.setOrganization(organizationRepository.getReferenceById((long)1));
-        user.setRoles(Arrays.asList(/*roleRepository.getReferenceById((long)1)*/roleRepository.findByRoleName("ROLE_ADMIN")));
+        user.setRoles(Arrays.asList(roleRepository.findByRoleName(role)));
         return userRepository.save(user);
     }
 

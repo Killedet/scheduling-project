@@ -40,7 +40,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .clearAuthentication(true)
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             .logoutSuccessUrl("/login?logout")
-            .permitAll();
+            .permitAll()
+            .and()
+            .csrf().disable().cors();
     }
 	@Bean
     public BCryptPasswordEncoder passwordEncoder() {

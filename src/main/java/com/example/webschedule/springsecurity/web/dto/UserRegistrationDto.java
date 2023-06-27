@@ -51,6 +51,7 @@ public class UserRegistrationDto {
     	this.orgID = id;
     }
     */
+    
     public String getFirstName() {
         return firstName;
     }

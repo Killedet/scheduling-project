@@ -44,7 +44,7 @@ public class UserRegistrationController {
             return "registration";
         }
 
-        userService.save(userDto);
+        userService.save(userDto, "ROLE_ADMIN");
         return "redirect:/registration?success";
     }
 }

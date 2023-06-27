@@ -1,5 +1,5 @@
 /**
- RUN mvnw spring-boot:run
+
  */
  $(document).ready(function(){
 	var scheduler; //SCHEDULE BUILDER FOR AUTO SCHEDULE CREATION
