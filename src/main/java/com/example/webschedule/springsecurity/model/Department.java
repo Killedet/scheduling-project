@@ -29,7 +29,6 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private Collection <DepartmentsCompleteCalendarSchedule> departmentCalendar;
     
-    @JsonIgnore
     @OneToMany(mappedBy = "department")
     private Collection <UsersDepartments> users;
     
@@ -41,13 +40,19 @@ public class Department {
     	this.departmentName = depName;
     	this.departmentOrganization = org;
     }
-    
+    public Long getId() {
+    	return this.departmentId;
+    }
+    public void setId(Long id) {
+    	this.departmentId = id;
+    }
     public String getName() {
     	return this.departmentName;
     }
     public void setName(String depName) {
     	this.departmentName = depName;
     }
+    @JsonIgnore
     public Organization getOrganization() {
     	return this.departmentOrganization;
     }

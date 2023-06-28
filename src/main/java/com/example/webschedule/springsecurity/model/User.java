@@ -16,6 +16,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonIgnore
     private String password;
     private String username;
     private String phoneNumber;
@@ -116,11 +117,11 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
-
+    @JsonIgnore
     public void setPassword(String password) {
         this.password = password;
     }
