@@ -10,6 +10,6 @@ import java.util.Collection;
 @Repository
 public interface DepartmentRepository extends JpaRepository < Department, Long > {
     
-    Collection<Department> getByDepartmentOrganization(Organization departmentOrganization);
+    Collection<Department> findAllByDepartmentOrganization(Organization departmentOrganization);
 	
 }

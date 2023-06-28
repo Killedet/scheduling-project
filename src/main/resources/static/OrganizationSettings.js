@@ -16,7 +16,7 @@ $(document).ready(function(){
     		dataType:'json'
     		
 		}).then(function(data){
-			console.log(data);
+			console.log(data[0]);
 			$('#departmentsDiv').append(data);
 		});
 		$(".organization-settings-view").show();

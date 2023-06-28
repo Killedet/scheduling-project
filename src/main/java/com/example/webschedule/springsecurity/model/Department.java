@@ -1,6 +1,9 @@
 package com.example.webschedule.springsecurity.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 
 @Entity
@@ -18,12 +21,15 @@ public class Department {
 	@JoinColumn(name = "organization_fk")
     private Organization departmentOrganization;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "department")
     private Collection <DepartmentsCompleteWeeklySchedule> departmentSchedules;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "department")
     private Collection <DepartmentsCompleteCalendarSchedule> departmentCalendar;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "department")
     private Collection <UsersDepartments> users;
     

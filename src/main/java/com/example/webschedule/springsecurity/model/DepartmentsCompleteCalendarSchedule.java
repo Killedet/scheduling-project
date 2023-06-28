@@ -5,6 +5,8 @@ import java.util.Collection;
 import javax.persistence.*;
 //import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "departments_complete_calendar_schedules")
 public class DepartmentsCompleteCalendarSchedule {
@@ -18,9 +20,11 @@ public class DepartmentsCompleteCalendarSchedule {
 	@JoinColumn(name = "department_fk")
     private Department department;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "calendar")
     private Collection <OverTimeSchedule> overTimeSchedules;
     
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name = "calendar_departments_complete_shift_schedules",

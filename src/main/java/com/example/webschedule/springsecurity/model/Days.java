@@ -1,6 +1,9 @@
 package com.example.webschedule.springsecurity.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 
 @Entity
@@ -13,7 +16,8 @@ public class Days {
     private Long dayId;
     
     private String dayName;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "shiftDay")
     private Collection <WeeklyShift> weeklyShifts;
     

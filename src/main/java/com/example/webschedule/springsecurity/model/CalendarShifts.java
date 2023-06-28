@@ -40,7 +40,7 @@ public class CalendarShifts {
     		joinColumns = @JoinColumn(
     				name = "calendar_shift_fk"/*,referencedColumnName = "id"*/),
     		inverseJoinColumns = @JoinColumn(
-    				name = "rser_fk"/*,referencedColumnName = "id"*/))
+    				name = "user_fk"/*,referencedColumnName = "id"*/))
     private User contributer;
     
     @ManyToOne(fetch = FetchType.LAZY)

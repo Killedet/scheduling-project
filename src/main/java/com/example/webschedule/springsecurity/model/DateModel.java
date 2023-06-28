@@ -1,6 +1,9 @@
 package com.example.webschedule.springsecurity.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 
 @Entity
@@ -14,7 +17,8 @@ public class DateModel {
     
     @Column(name = "date_of")
     String dateString;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "shiftDate")
     private Collection<CalendarShifts> shifts;
     

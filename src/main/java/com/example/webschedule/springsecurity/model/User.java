@@ -1,5 +1,7 @@
 package com.example.webschedule.springsecurity.model;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.time.LocalDate;
 @Entity
@@ -23,9 +25,11 @@ public class User {
 	@JoinColumn(name = "organization_fk")
     private Organization usersOrganization;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Collection <UsersDepartments> departments;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Collection <Admin> adminPrivileges;
     
@@ -38,6 +42,7 @@ public class User {
             name = "role_fk"/*,referencedColumnName = "id"*/))
     private Collection < Role > roles;
     
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name = "users_weekly_worker_schedules",
@@ -47,6 +52,7 @@ public class User {
     				name = "worker_weekly_schedule_fk"/*,referencedColumnName = "id"*/))
     private Collection <WorkerWeeklySchedule> weeklySchedules;
     
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name = "users_calendar_shifts",
@@ -56,6 +62,7 @@ public class User {
     				name = "calendar_shift_fk"/*,referencedColumnName = "id"*/))
     private Collection <CalendarShifts> calendarShifts;
     
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name = "users_contributed_overtime_shifts",
@@ -142,11 +149,11 @@ public class User {
         this.hireDate = hired;
     }
     
-    
+    @JsonIgnore
     public Organization getOrganization() {
     	return usersOrganization;
     }
-    
+    @JsonIgnore
     public void setOrganization(Organization org) {
     	this.usersOrganization = org;
     }

@@ -1,6 +1,9 @@
 package com.example.webschedule.springsecurity.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 
 @Entity
@@ -30,6 +33,7 @@ public class WorkerWeeklySchedule {
     				name = "departments_complete_weekly_schedule_fk"/*,referencedColumnName = "id"*/))
     private DepartmentsCompleteWeeklySchedule departmentSchedule;
     
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name = "weekly_worker_shifts_schedules",

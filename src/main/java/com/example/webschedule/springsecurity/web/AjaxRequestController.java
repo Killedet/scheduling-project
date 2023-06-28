@@ -21,7 +21,6 @@ import com.example.webschedule.springsecurity.model.Organization;
 import com.example.webschedule.springsecurity.web.dto.OrganizationDto;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.ArrayList;
 import java.lang.Long;
 
@@ -39,16 +38,14 @@ class AjaxRequestController{
 			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})*/
 	@RequestMapping(value = "/departments", headers = "Accept=application/json", method = RequestMethod.POST)
 	public Collection<Department> getOrganizationDepartments(@RequestBody @Valid OrganizationDto orgDto /*HttpServletRequest request*/){
-		System.out.println(orgDto);
-		System.out.println(orgDto.getorganizationName());
+		
 		Collection<Department> departments = new ArrayList<Department>();
-		System.out.println(orgDto.getorganizationId());
 		Long orgIdLong = orgDto.getorganizationId();
 		Organization org = organizationRepository.findById(orgIdLong).orElse(null);
-		System.out.println(org.getName());
 		if(org != null) {
-			departments = departmentRepository.getByDepartmentOrganization(org);
+			departments = departmentRepository.findAllByDepartmentOrganization(org);
 		}
+		
 		return departments;
 	}
 }

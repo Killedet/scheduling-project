@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "roles")//ADDED FOR NEW DB
 public class Role {
@@ -21,9 +23,11 @@ public class Role {
     
     private String roleName;
     
+    @JsonIgnore
     @OneToMany(mappedBy ="roleInDepartment")
     private Collection <UsersDepartments> userAndDepartment;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "adminRole")
     private Collection <Admin> admins;
     
