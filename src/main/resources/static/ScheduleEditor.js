@@ -452,10 +452,10 @@ class ScheduleEditor{
 				var singleShift = singleSchedule[j];
 				//console.log(singleShift[0].getHour());
 				if(singleShift[0].getHour() > -1){
-					var start15MinuteSlot = singleShift[0].getHour() * 4 + (singleShift[0].getMinute()/15);
+					var start15MinuteSlot = singleShift[0].getHour() * 4 + (Math.floor(singleShift[0].getMinute()/15));
 					//console.log("start15Minute");
 					//console.log(start15MinuteSlot);
-					var numberOf15MinuteSlotsInShift = (singleShift[0].minutesBetween(singleShift[1]))/15;
+					var numberOf15MinuteSlotsInShift = Math.floor((singleShift[0].minutesBetween(singleShift[1]))/15);
 					//console.log(numberOf15MinuteSlotsInShift);
 					var indexOf15MinuteSlot;
 					var scheduleName = (i+1);
@@ -469,19 +469,17 @@ class ScheduleEditor{
 						if(indexOf15MinuteSlot < 0){
 							indexOf15MinuteSlot += 96;
 						}
-						//console.log("start15")
-						//console.log(start15MinuteSlot);
-						//console.log("index");
-						//console.log(indexOf15MinuteSlot);
-						//console.log("--------------------")
-						//console.log("J");
-						//console.log(j);
-						//console.log(this.#workDays[j]);
-						//console.log(this.#coverageArray[this.#workDays[j]]);
-						//console.log("Day Array");
-						//console.log(this.#coverageArray[j]);
-						//console.log("MinuteArray");
-						//console.log(this.#coverageArray[j][indexOf15MinuteSlot]);
+						/*console.log("start15")
+						console.log(start15MinuteSlot);
+						console.log("index");
+						console.log(indexOf15MinuteSlot);
+						console.log("--------------------")
+						console.log("J");
+						console.log(j);
+						console.log("Day Array");
+						console.log(this.#coverageArray[j]);
+						console.log("MinuteArray");
+						console.log(this.#coverageArray[j][indexOf15MinuteSlot]);*/
 						this.#coverageArray[j][indexOf15MinuteSlot].push(scheduleName);
 						start15MinuteSlot++;
 					}

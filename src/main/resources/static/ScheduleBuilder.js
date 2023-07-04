@@ -117,6 +117,11 @@
 					var startTimeArray = currentTime.split(':');
 					var startHour = parseInt(startTimeArray[0]);
 					var startMinute = parseInt(startTimeArray[1]);
+					console.log("startHour");
+					console.log(startHour);
+					
+					console.log("startMinute");
+					console.log(startMinute);
 					startTime = new MyTime(startHour,startMinute);
 				}
 				start = false;
